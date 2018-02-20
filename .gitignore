@@ -1,0 +1,12 @@
+src/*.js
+src/*.js.map
+build/*.js
+build/*.js.map
+/build_tmp
+/fs
+package
+node_modules
+yarn*.*
+.idea
+package
+

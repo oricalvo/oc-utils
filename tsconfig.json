@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "declaration": false,
+    "lib": ["dom", "es6"],
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "outDir": "src_out"
+  },
+  "files": [
+    "src/index.ts"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "@oc/utils",
+  "version": "1.0.0",
+  "description": "A collection of utils functions for applications and build scripts",
+  "main": "index.js",
+  "scripts": {
+    "pack": "node cli.js pack",
+    "patch": "node cli.js patch",
+    "link": "node cli.js link",
+    "unlink": "node cli.js unlink"
+  },
+  "author": "Ori Calvo",
+  "license": "MIT",
+  "dependencies": {
+    "@types/jasmine": "^2.8.2",
+    "build-utils": "^1.0.83",
+    "deep-assign": "^2.0.0",
+    "follow-redirects": "^1.2.3",
+    "fs-extra": "^2.0.0",
+    "glob": "^7.1.1",
+    "jasmine": "^2.8.0",
+    "minimatch": "^3.0.3",
+    "open": "^0.0.5",
+    "request": "^2.81.0",
+    "rollup": "^0.56.2",
+    "shelljs": "^0.7.6",
+    "tslib": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.5",
+    "typescript": "^2.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oricalvo/oc-utils.git"
+  },
+  "bin": {
+    "bu": "bin/bu.js"
+  }
+}
