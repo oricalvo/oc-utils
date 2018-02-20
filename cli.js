@@ -1,12 +1,15 @@
-const {pack, patch, link, unlink} = require("./build/main");
-const cli = require("./src/cli");
-const {enableLogging} = require("./src/logger");
+const build = require("./build_out/build/main");
 
-enableLogging();
+const args = process.argv;
 
-cli.command("pack", pack);
-cli.command("patch", patch);
-cli.command("link", link);
-cli.command("unlink", unlink);
+const command = args[2];
+if(!command) {
+    throw new Error("Missing command");
+}
 
-cli.run();
+const action = build[command];
+if(!action) {
+    throw new Error("Command " + command + " was not found");
+}
+
+action();

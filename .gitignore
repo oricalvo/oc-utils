@@ -3,10 +3,11 @@ src/*.js.map
 build/*.js
 build/*.js.map
 /build_tmp
+/build_out
+/src_out
+/dist
 /fs
 package
 node_modules
 yarn*.*
 .idea
-package
-

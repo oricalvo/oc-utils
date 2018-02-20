@@ -1,7 +1,9 @@
 import {copyGlob, copyFile, deleteDirectory} from "../src/fs";
 import {spawn} from "../src/process";
 import * as path from "path";
-import {logger} from "../src/logger";
+import {logger, enableLogging} from "../src/logger";
+
+enableLogging();
 
 const folders = {
     package: path.join(__dirname, "../package"),
@@ -10,17 +12,26 @@ const folders = {
 logger.log(folders.package);
 
 export async function pack() {
-    logger.log("Creating npm package");
-
-    await deleteDirectory("./build_tmp");
+    logger.log("Deleting temp directories");
+    await deleteDirectory("./src_out");
+    await deleteDirectory("./dist");
     await deleteDirectory("./package");
 
-    await spawn(path.resolve("node_modules/.bin/tsc"), ["-p", "./build/tsconfig.pack.json"], {
+    logger.log("Compiling typescript");
+    await spawn(path.resolve("node_modules/.bin/tsc"), ["-p", "./tsconfig.json"], {
         shell: true,
         validateExitCode: true,
     });
-    await copyGlob("./build_tmp/*.js", "./package");
-    await copyGlob("./build_tmp/*.d.ts", "./package");
+
+    logger.log("Bundling using Rollup");
+    await spawn(path.resolve("node_modules/.bin/rollup"), ["-c", "./build/rollup.config.js"], {
+        shell: true,
+        validateExitCode: true,
+    });
+
+    logger.log("Copying files to package directory");
+    await copyFile("./dist/bundle.js", "./package/oc-utils.js");
+    await copyGlob("./src_out/*.d.ts", "./package");
     await copyGlob("./bin/*.js", "./package/bin");
     await copyFile("./package.json", "package/package.json");
 }

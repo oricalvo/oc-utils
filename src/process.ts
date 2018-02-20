@@ -26,8 +26,8 @@ export function spawn(command, args, overrideOptions?): Promise<ChildProcess> {
     return new Promise((resolve, reject) => {
         try {
             logger.log("Spawning a new process");
-            logger.log("    " + command);
-            logger.log("    " + options);
+            logger.log("    ", command);
+            logger.log("    ", options);
 
             const child = child_process.spawn(command, args, options);
 

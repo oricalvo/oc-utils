@@ -1,18 +1,18 @@
 
 export interface ILogger {
-    log(message: string);
-    error(message: string);
-    warn(message: string);
+    log(...args);
+    error(...args);
+    warn(...args);
 }
 
 export class NullLogger implements ILogger {
-    log(message: string) {
+    log(...args) {
     }
 
-    error(message: string) {
+    error(...args) {
     }
 
-    warn(message: string) {
+    warn(...args) {
     }
 }
 

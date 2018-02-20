@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true,
-    "declaration": false,
+    "module": "es6",
+    "target": "es2017",
+    "sourceMap": false,
+    "declaration": true,
     "lib": ["dom", "es6"],
     "noEmitHelpers": true,
     "importHelpers": true,
-    "outDir": "src_out"
+    "outDir": "src_out",
+    "moduleResolution": "node"
   },
   "files": [
     "src/index.ts"
